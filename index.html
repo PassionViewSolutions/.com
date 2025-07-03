@@ -1,167 +1,730 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PassionView Solutions Limited | Building Profesionals for Best Practices Pefromance.</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PassionView Solutions Limited - Building Professionals for Best Practice Performance. Learn web development, data analytics, and cybersecurity.">
+  <meta name="keywords" content="tech training, web development, data analytics, cybersecurity, Nigerian youth, digital skills">
+  <title>PassionView Solutions Limited | Building Professionals for Best Practice Performance</title>
+
+  <!-- Preconnect for performance -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Libraries -->
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css">
+
   <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .primary { color: #D90429; }
-    .bg-primary { background-color: #D90429; }
-    .hover-card { position: relative; overflow: hidden; }
-    .hover-card-content {
+    :root {
+      --primary-color: #D90429;
+      --primary-dark: #B8001F;
+      --text-dark: #2D3748;
+      --text-light: #718096;
+      --bg-light: #F7FAFC;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+    
+    .primary { color: var(--primary-color); }
+    .bg-primary { background-color: var(--primary-color); }
+    .bg-primary:hover { background-color: var(--primary-dark); }
+    
+    /* Enhanced Mobile Navigation */
+    .mobile-menu {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+    
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--primary-color);
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    /* Hero Section Improvements */
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(217, 4, 41, 0.8), rgba(0, 0, 0, 0.6));
+      backdrop-filter: blur(1px);
+    }
+    
+    .hero-content {
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Enhanced Cards */
+    .course-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .course-card::before {
+      content: '';
       position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), #FF6B6B);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .course-card:hover::before {
+      opacity: 1;
+    }
+    
+    .hover-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(217, 4, 41, 0.95), rgba(0, 0, 0, 0.9));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .course-card:hover .hover-content {
+      opacity: 1;
+    }
+    
+    /* Feature Cards */
+    .feature-card {
+      padding: 2rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    /* Testimonial Cards */
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-3px);
+    }
+    
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 4rem;
+      color: var(--primary-color);
+      opacity: 0.3;
+    }
+    
+    /* Enhanced Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), #FF6B6B);
+      color: white;
+      padding: 12px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(217, 4, 41, 0.4);
+      color: white;
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      padding: 10px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-weight: 600;
+    }
+    
+    .btn-secondary:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Responsive Improvements */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
+      
+      .feature-card {
+        padding: 1.5rem;
+      }
+      
+      .testimonial-card {
+        padding: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .btn-primary, .btn-secondary {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* Loading Animation */
+    .loading {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
+      background: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      text-align: center;
-      padding: 1rem;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
     }
-    .hover-card:hover .hover-card-content { opacity: 1; }
+    
+    .loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
   </style>
-</head>
-<body class="bg-white text-black">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold text-primary">PassionView Solutions Ltd.</div>
-      <div class="space-x-6 hidden md:block">
-        <a href="#" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-800">Home</a>
-        <a href="about_us_page (1).html" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-800">About Us</a>
-        <a href="courses_page (1).html" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-800">Courses</a>
-        <a href="contact.html" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-800">Contact</a>
-         <a href="F.A.Q.html" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-800">Faq</a>
-          <a href="testimonials.html" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-800">Testimonials</a>
-        <a href="events.html" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-800">Events</a>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Navigation -->
+
+  <nav class="bg-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <h1 class="text-xl sm:text-2xl font-bold text-primary">PassionView Solutions Ltd.</h1>
+        </div>
+
+```
+    <!-- Desktop Navigation -->
+    <div class="hidden md:block">
+      <div class="ml-10 flex items-baseline space-x-4">
+        <a href="#home" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-red-800 transition">Home</a>
+        <a href="#about" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md transition">About</a>
+        <a href="#courses" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md transition">Courses</a>
+        <a href="#testimonials" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md transition">Testimonials</a>
+        <a href="#contact" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md transition">Contact</a>
       </div>
     </div>
+    
+    <!-- Mobile menu button -->
+    <div class="md:hidden">
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Navigation -->
+<div class="mobile-menu md:hidden bg-white shadow-lg" id="mobile-menu">
+  <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+    <a href="#home" class="block px-3 py-2 text-primary font-medium">Home</a>
+    <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-primary">About</a>
+    <a href="#courses" class="block px-3 py-2 text-gray-700 hover:text-primary">Courses</a>
+    <a href="#testimonials" class="block px-3 py-2 text-gray-700 hover:text-primary">Testimonials</a>
+    <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-primary">Contact</a>
+  </div>
+</div>
+```
+
   </nav>
 
-  <!-- Hero Banner with Swiper Image Slider -->
-  <section class="relative h-screen text-white flex flex-col justify-center items-center text-center px-4">
+  <!-- Hero Section -->
+
+  <section id="home" class="relative h-screen flex items-center justify-center text-white">
+    <!-- Background Slider -->
     <div class="absolute inset-0 z-0">
-      <div class="swiper h-full">
+      <div class="swiper hero-swiper h-full">
         <div class="swiper-wrapper">
-          <div class="swiper-slide bg-cover bg-center" style="background-image: url('1\ \(1\).JPG');"></div>
-          <div class="swiper-slide bg-cover bg-center" style="background-image: url('1\ \(4\).JPG');"></div>
-          <div class="swiper-slide bg-cover bg-center" style="background-image: url('1\ \(2\).JPG');"></div>
-          <div class="swiper-slide bg-cover bg-center" style="background-image: url('1\ \(3\).JPG');"></div>
+          <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2671&q=80');"></div>
+          <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80');"></div>
+          <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1515169067868-5387ec356754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80');"></div>
+          <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80');"></div>
         </div>
         <div class="swiper-pagination"></div>
       </div>
     </div>
-    <div class="z-10 relative">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Building Professionals for  Best Practice Performance</h1>
-      <p class="text-lg md:text-xl mb-6" >Start Your Journey Today</p>
-      <a href="#courses" class="bg-primary text-white px-6 py-3 rounded hover:bg-red-800 transition">Explore Courses</a>
+
+```
+<!-- Hero Overlay -->
+<div class="absolute inset-0 hero-overlay z-10"></div>
+
+<!-- Hero Content -->
+<div class="relative z-20 text-center px-4 sm:px-6 lg:px-8 hero-content">
+  <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
+    Building Professionals for<br>
+    <span class="text-yellow-400">Best Practice Performance</span>
+  </h1>
+  <p class="text-xl sm:text-2xl mb-8 max-w-3xl mx-auto">
+    Empowering Nigerian youth with cutting-edge tech skills for the digital economy
+  </p>
+  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <a href="#courses" class="btn-primary">Explore Courses</a>
+    <a href="#about" class="btn-secondary">Learn More</a>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- About Section -->
+
+  <section id="about" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">Who We Are</h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          PassionView Solutions Limited is Nigeria's premier digital training hub, dedicated to equipping young professionals with the tech skills they need to thrive in today's rapidly evolving digital economy. We bridge the gap between traditional education and industry demands through practical, hands-on training programs.
+        </p>
+      </div>
+
+```
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+        <span class="text-white text-2xl">🎯</span>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Our Mission</h3>
+      <p class="text-gray-600">To create a generation of tech-savvy professionals ready to lead Nigeria's digital transformation.</p>
     </div>
+    
+    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+      <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+        <span class="text-white text-2xl">👁️</span>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Our Vision</h3>
+      <p class="text-gray-600">To be the leading platform for digital skills development in West Africa by 2030.</p>
+    </div>
+    
+    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+      <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+        <span class="text-white text-2xl">⚡</span>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Our Values</h3>
+      <p class="text-gray-600">Excellence, Innovation, Integrity, and Empowerment drive everything we do.</p>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
-  <!-- Intro Section -->
-  <section id="about" class="py-16 px-6 md:px-20 text-center" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-4 text-black">Who We Are</h2>
-    <p class="text-gray-700 max-w-3xl mx-auto">PassionView Solutions Limited is a digital hub focused on equipping Nigerian  youth with tech skills to thrive in today’s digital economy. From web design to data analytics, we create opportunities through practical, market-ready training.</p>
-  </section>
+  <!-- Courses Section -->
 
-  <!-- Featured Courses -->
-  <section id="courses" class="py-16 px-6 md:px-20 bg-gray-100" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-center mb-10 text-black">Featured Courses</h2>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="bg-white shadow p-6 rounded-lg hover-card transition">
-        <h3 class="text-xl font-semibold text-black mb-2">Web Development</h3>
-        <p class="text-gray-700">Learn HTML, CSS, JavaScript and build professional website   s.</p>
-        <div class="hover-card-content">
-          <p>Master responsive design, Git, deployment & frontend tools like React.</p>
+  <section id="courses" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">Featured Courses</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Discover our comprehensive range of industry-relevant courses designed to propel your career forward
+        </p>
+      </div>
+
+```
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="course-card bg-white" data-aos="fade-up" data-aos-delay="100">
+      <div class="p-6">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+          <span class="text-blue-600 text-xl">💻</span>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Web Development</h3>
+        <p class="text-gray-600 mb-4">Master HTML, CSS, JavaScript, and modern frameworks to build stunning, responsive websites.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML/CSS</span>
+          <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JavaScript</span>
+          <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">React</span>
         </div>
       </div>
-      <div class="bg-white shadow p-6 rounded-lg hover-card transition">
-        <h3 class="text-xl font-semibold text-black mb-2">Data Analytics</h3>
-        <p class="text-gray-700">Master Excel, Power BI, and data visualization techniques.</p>
-        <div class="hover-card-content">
-          <p>Includes SQL basics, dashboard creation, and business intelligence insights.</p>
+      <div class="hover-content">
+        <div>
+          <h4 class="font-semibold mb-2">What You'll Learn:</h4>
+          <ul class="text-sm space-y-1">
+            <li>✓ Responsive Design Principles</li>
+            <li>✓ Modern JavaScript ES6+</li>
+            <li>✓ React.js Development</li>
+            <li>✓ Version Control with Git</li>
+            <li>✓ Deployment Strategies</li>
+          </ul>
         </div>
       </div>
-      <div class="bg-white shadow p-6 rounded-lg hover-card transition">
-        <h3 class="text-xl font-semibold text-black mb-2">Cybersecurity</h3>
-        <p class="text-gray-700">Get started with ethical hacking and system protection.</p>
-        <div class="hover-card-content">
-          <p>Covering fundamentals of network security, tools, and real-life threat simulations.</p>
+    </div>
+    
+    <div class="course-card bg-white" data-aos="fade-up" data-aos-delay="200">
+      <div class="p-6">
+        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+          <span class="text-green-600 text-xl">📊</span>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Data Analytics</h3>
+        <p class="text-gray-600 mb-4">Transform raw data into actionable insights using Excel, Power BI, and advanced analytics tools.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-green-100 text-green-600 rounded-full text-sm">Excel</span>
+          <span class="px-2 py-1 bg-green-100 text-green-600 rounded-full text-sm">Power BI</span>
+          <span class="px-2 py-1 bg-green-100 text-green-600 rounded-full text-sm">SQL</span>
+        </div>
+      </div>
+      <div class="hover-content">
+        <div>
+          <h4 class="font-semibold mb-2">What You'll Learn:</h4>
+          <ul class="text-sm space-y-1">
+            <li>✓ Advanced Excel Functions</li>
+            <li>✓ Power BI Dashboard Creation</li>
+            <li>✓ SQL Database Querying</li>
+            <li>✓ Statistical Analysis</li>
+            <li>✓ Business Intelligence</li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="py-16 px-6 md:px-20" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-center mb-10 text-black">Why Choose PassionView?</h2>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 text-center">
-      <div>
-        <div class="text-4xl text-primary mb-2">🎓</div>
-        <h4 class="font-semibold text-black">Certified Instructors</h4>
-        <p class="text-gray-600">Learn from professionals with industry experience.</p>
+    
+    <div class="course-card bg-white" data-aos="fade-up" data-aos-delay="300">
+      <div class="p-6">
+        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+          <span class="text-red-600 text-xl">🛡️</span>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Cybersecurity</h3>
+        <p class="text-gray-600 mb-4">Learn ethical hacking, network security, and how to protect digital assets from cyber threats.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-1 bg-red-100 text-red-600 rounded-full text-sm">Ethical Hacking</span>
+          <span class="px-2 py-1 bg-red-100 text-red-600 rounded-full text-sm">Network Security</span>
+          <span class="px-2 py-1 bg-red-100 text-red-600 rounded-full text-sm">Penetration Testing</span>
+        </div>
       </div>
-      <div>
-        <div class="text-4xl text-primary mb-2">💼</div>
-        <h4 class="font-semibold text-black">Job-Ready Skills</h4>
-        <p class="text-gray-600">Our courses are built for real-world application.</p>
-      </div>
-      <div>
-        <div class="text-4xl text-primary mb-2">📱</div>
-        <h4 class="font-semibold text-black">Mobile-Friendly</h4>
-        <p class="text-gray-600">Learn anytime, anywhere using your smartphone.</p>
-      </div>
-      <div>
-        <div class="text-4xl text-primary mb-2">🎯</div>
-        <h4 class="font-semibold text-black">Goal Driven</h4>
-        <p class="text-gray-600">We help you meet career and learning goals quickly.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Preview -->
-  <section class="py-16 px-6 md:px-20 bg-gray-50" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-center mb-10 text-black">What Our Students Say</h2>
-    <div class="grid gap-8 md:grid-cols-2">
-      <div class="bg-white p-6 shadow rounded">
-        <p class="text-gray-700 italic">“PassionView taught me how to code from scratch. Now I freelance and earn remotely!”</p>
-        <p class="mt-4 font-semibold text-primary">— Amina Yusuf</p>
-      </div>
-      <div class="bg-white p-6 shadow rounded">
-        <p class="text-gray-700 italic">“The instructors are friendly and knowledgeable. Highly recommend their data analysis course!”</p>
-        <p class="mt-4 font-semibold text-primary">— John Okoro</p>
+      <div class="hover-content">
+        <div>
+          <h4 class="font-semibold mb-2">What You'll Learn:</h4>
+          <ul class="text-sm space-y-1">
+            <li>✓ Network Security Fundamentals</li>
+            <li>✓ Ethical Hacking Techniques</li>
+            <li>✓ Vulnerability Assessment</li>
+            <li>✓ Security Tool Mastery</li>
+            <li>✓ Incident Response</li>
+          </ul>
+        </div>
       </div>
     </div>
+  </div>
+</div>
+```
+
   </section>
 
-  <!-- Final Call-to-Action -->
-  <section class="py-16 px-6 md:px-20 text-center" data-aos="zoom-in">
-    <h2 class="text-3xl font-bold text-black mb-6">Ready to Launch Your Tech Career?</h2>
-    <a href="registration.html" class="bg-primary text-white px-8 py-4 rounded-full hover:bg-red-800 transition">Register Now</a>
+  <!-- Why Choose Us Section -->
+
+  <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">Why Choose PassionView?</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          We're committed to providing world-class training that prepares you for real-world success
+        </p>
+      </div>
+
+```
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="feature-card text-center" data-aos="fade-up" data-aos-delay="100">
+      <span class="feature-icon">🎓</span>
+      <h4 class="text-xl font-semibold mb-3">Expert Instructors</h4>
+      <p class="text-gray-600">Learn from industry professionals with years of hands-on experience and proven track records.</p>
+    </div>
+    
+    <div class="feature-card text-center" data-aos="fade-up" data-aos-delay="200">
+      <span class="feature-icon">💼</span>
+      <h4 class="text-xl font-semibold mb-3">Job-Ready Skills</h4>
+      <p class="text-gray-600">Our curriculum is designed with employer needs in mind, ensuring you graduate with market-relevant skills.</p>
+    </div>
+    
+    <div class="feature-card text-center" data-aos="fade-up" data-aos-delay="300">
+      <span class="feature-icon">📱</span>
+      <h4 class="text-xl font-semibold mb-3">Mobile-First Learning</h4>
+      <p class="text-gray-600">Access your courses anytime, anywhere with our mobile-optimized platform and offline capabilities.</p>
+    </div>
+    
+    <div class="feature-card text-center" data-aos="fade-up" data-aos-delay="400">
+      <span class="feature-icon">🎯</span>
+      <h4 class="text-xl font-semibold mb-3">Career Support</h4>
+      <p class="text-gray-600">Get personalized career guidance, resume building, and job placement assistance throughout your journey.</p>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
-  <!-- AOS and Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script>
-    AOS.init();
-    const swiper = new Swiper('.swiper', {
-      effect: 'fade',
-      loop: true,
-      autoplay: { delay: 4000 },
-      pagination: { el: '.swiper-pagination', clickable: true },
-    });
-  </script>
+  <!-- Testimonials Section -->
+
+  <section id="testimonials" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">What Our Students Say</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Don't just take our word for it - hear from our successful graduates who are now thriving in their careers
+        </p>
+      </div>
+
+```
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">A</div>
+        <div class="ml-4">
+          <h4 class="font-semibold">Amina Yusuf</h4>
+          <p class="text-sm text-gray-600">Web Developer</p>
+        </div>
+      </div>
+      <p class="text-gray-700 italic mb-4">"PassionView transformed my career completely. I went from having no coding knowledge to landing a remote job with an international company. The instructors were patient, knowledgeable, and always available to help."</p>
+      <div class="flex text-yellow-400">
+        <span>⭐⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    
+    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="flex items-center mb-4">
+        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">J</div>
+        <div class="ml-4">
+          <h4 class="font-semibold">John Okoro</h4>
+          <p class="text-sm text-gray-600">Data Analyst</p>
+        </div>
+      </div>
+      <p class="text-gray-700 italic mb-4">"The data analytics course exceeded my expectations. The hands-on projects and real-world case studies prepared me perfectly for my current role. I'm now leading data initiatives at my company."</p>
+      <div class="flex text-yellow-400">
+        <span>⭐⭐⭐⭐⭐</span>
+              </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">S</div>
+          <div class="ml-4">
+            <h4 class="font-semibold">Sarah Bello</h4>
+            <p class="text-sm text-gray-600">Cybersecurity Specialist</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic mb-4">"I joined PassionView with little technical knowledge, but the cybersecurity program gave me the confidence and skills to secure a job in the banking sector. Highly recommended!"</p>
+        <div class="flex text-yellow-400">
+          <span>⭐⭐⭐⭐⭐</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-6">Get in Touch</h2>
+    <p class="text-lg text-gray-600 mb-8">
+      Have questions or ready to start your journey? Reach out to us today!
+    </p>
+    <form class="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
+      <input type="text" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+      <input type="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+      <textarea placeholder="Your Message" rows="4" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+      <button type="submit" class="btn-primary w-full">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <h3 class="text-xl font-bold text-white">PassionView Solutions Ltd.</h3>
+        <p class="text-gray-400">Building Professionals for Best Practice Performance</p>
+      </div>
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-400 hover:text-white">Facebook</a>
+        <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+        <a href="#" class="text-gray-400 hover:text-white">LinkedIn</a>
+      </div>
+    </div>
+    <div class="mt-4 text-center text-gray-500 text-sm">
+      &copy; 2025 PassionView Solutions Ltd. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js"></script>
+<script>
+  // Loading screen
+  window.addEventListener('load', () => {
+    document.getElementById('loading').classList.add('hidden');
+  });
+
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
+
+  // Initialize Swiper
+  const swiper = new Swiper('.hero-swiper', {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
+
 </body>
 </html>
+
