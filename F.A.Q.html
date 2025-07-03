@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs | PassionView Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c8102e',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+
+  <main class="max-w-4xl mx-auto px-6 py-10 space-y-10">
+    <h1 class="text-3xl font-bold text-center text-primary">Frequently Asked Questions</h1>
+
+    <section class="space-y-4">
+      <div class="border border-gray-200 dark:border-gray-700 rounded">
+        <button onclick="toggleFAQ(0)" class="w-full flex justify-between items-center p-4 text-left text-lg font-medium bg-white dark:bg-gray-800">
+          What courses do you offer?
+          <span>+</span>
+        </button>
+        <div id="faq-0" class="hidden px-4 pb-4 text-gray-700 dark:text-gray-300">
+          We offer a wide range of tech courses including Frontend & Backend Development, Data Analytics, Cybersecurity, Digital Marketing, and more.
+        </div>
+      </div>
+
+      <div class="border border-gray-200 dark:border-gray-700 rounded">
+        <button onclick="toggleFAQ(1)" class="w-full flex justify-between items-center p-4 text-left text-lg font-medium bg-white dark:bg-gray-800">
+          Do I receive a certificate after completing a course?
+          <span>+</span>
+        </button>
+        <div id="faq-1" class="hidden px-4 pb-4 text-gray-700 dark:text-gray-300">
+          Yes! Upon successful completion of your course and final project, you'll receive a verifiable certificate from PassionView Solutions.
+        </div>
+      </div>
+
+      <div class="border border-gray-200 dark:border-gray-700 rounded">
+        <button onclick="toggleFAQ(2)" class="w-full flex justify-between items-center p-4 text-left text-lg font-medium bg-white dark:bg-gray-800">
+          Can I pay in installments?
+          <span>+</span>
+        </button>
+        <div id="faq-2" class="hidden px-4 pb-4 text-gray-700 dark:text-gray-300">
+          Absolutely! We offer flexible payment plans. Contact our team to discuss an installment plan that works for you.
+        </div>
+      </div>
+
+      <div class="border border-gray-200 dark:border-gray-700 rounded">
+        <button onclick="toggleFAQ(3)" class="w-full flex justify-between items-center p-4 text-left text-lg font-medium bg-white dark:bg-gray-800">
+          How long does a typical course take?
+          <span>+</span>
+        </button>
+        <div id="faq-3" class="hidden px-4 pb-4 text-gray-700 dark:text-gray-300">
+          Most of our intensive tech courses last between 4 to 8 weeks depending on the track and your pace.
+        </div>
+      </div>
+
+      <div class="border border-gray-200 dark:border-gray-700 rounded">
+        <button onclick="toggleFAQ(4)" class="w-full flex justify-between items-center p-4 text-left text-lg font-medium bg-white dark:bg-gray-800">
+          Are your classes online or physical?
+          <span>+</span>
+        </button>
+        <div id="faq-4" class="hidden px-4 pb-4 text-gray-700 dark:text-gray-300">
+          We offer both online and in-person options depending on your location. Our main training center is in Gusau, Zamfara.
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center mt-10">
+      <p class="text-gray-600 dark:text-gray-400">Still have questions?</p>
+      <a href="contact.html" class="text-primary underline font-semibold">Contact us now</a>
+    </div>
+  </main>
+
+  <script>
+    function toggleFAQ(index) {
+      const content = document.getElementById('faq-' + index);
+      content.classList.toggle('hidden');
+    }
+  </script>
+
+</body>
+</html>

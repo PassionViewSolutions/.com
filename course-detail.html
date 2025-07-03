@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Details | PassionView Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c8102e',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+
+  <main class="max-w-5xl mx-auto p-6 space-y-6">
+    <div id="courseHero" class="text-center space-y-3">
+      <h1 class="text-3xl font-bold" id="courseTitle">Course Title</h1>
+      <img id="courseImage" class="w-full h-64 object-cover rounded" alt="Course preview" />
+      <p class="text-gray-600 dark:text-gray-300" id="courseSummary">Course summary goes here...</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 p-4 rounded shadow grid sm:grid-cols-2 gap-6">
+      <div><strong>Duration:</strong> <span id="courseDuration"></span></div>
+      <div><strong>Fee:</strong> <span id="courseFee"></span></div>
+      <div><strong>Skill Level:</strong> <span id="courseLevel"></span></div>
+      <div><strong>Start Date:</strong> <span id="courseStart"></span></div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Learning Outcomes</h2>
+      <ul id="courseOutcomes" class="list-disc ml-6 text-gray-700 dark:text-gray-300"></ul>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Full Syllabus</h2>
+      <ul id="courseSyllabus" class="list-decimal ml-6 text-gray-700 dark:text-gray-300"></ul>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-2">Instructor</h2>
+      <div class="flex items-start space-x-4">
+        <img id="instructorImage" class="w-24 h-24 rounded-full object-cover" />
+        <div>
+          <h3 id="instructorName" class="text-xl font-semibold">Instructor Name</h3>
+          <p id="instructorBio" class="text-gray-700 dark:text-gray-300">Short bio</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <a id="downloadBrochure" class="bg-primary text-white px-4 py-2 rounded hover:opacity-90" download>Download Brochure</a>
+      <button onclick="alert('Enrollment coming soon...')" class="border border-primary text-primary px-4 py-2 rounded hover:bg-primary hover:text-white transition">Enroll Now</button>
+    </div>
+  </main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseId = urlParams.get('id') || 'frontend-development';
+
+    const courseData = {
+      'frontend-development': {
+        title: "Frontend Development",
+        image: "https://via.placeholder.com/800x300.png?text=Frontend+Banner",
+        summary: "Master web development with HTML, CSS, JavaScript, and modern frameworks.",
+        duration: "8 weeks",
+        fee: "₦50,000",
+        level: "Beginner",
+        start: "August 5, 2025",
+        outcomes: ["Build responsive websites", "Understand modern JavaScript", "Deploy real projects", "Work with version control (Git)"],
+        syllabus: ["Intro to Web", "HTML5", "CSS3", "JavaScript", "React Basics", "Final Project"],
+        instructor: {
+          name: "Aisha Bello",
+          image: "https://via.placeholder.com/150x150.png?text=Aisha+Bello",
+          bio: "Certified frontend engineer with 6+ years of experience in tech training across Nigeria."
+        },
+        brochure: "https://example.com/frontend-brochure.pdf"
+      }
+    };
+
+    const course = courseData[courseId];
+
+    if (course) {
+      document.getElementById("courseTitle").textContent = course.title;
+      document.getElementById("courseImage").src = course.image;
+      document.getElementById("courseSummary").textContent = course.summary;
+      document.getElementById("courseDuration").textContent = course.duration;
+      document.getElementById("courseFee").textContent = course.fee;
+      document.getElementById("courseLevel").textContent = course.level;
+      document.getElementById("courseStart").textContent = course.start;
+      document.getElementById("courseOutcomes").innerHTML = course.outcomes.map(o => `<li>${o}</li>`).join('');
+      document.getElementById("courseSyllabus").innerHTML = course.syllabus.map(s => `<li>${s}</li>`).join('');
+      document.getElementById("instructorName").textContent = course.instructor.name;
+      document.getElementById("instructorImage").src = course.instructor.image;
+      document.getElementById("instructorBio").textContent = course.instructor.bio;
+      document.getElementById("downloadBrochure").href = course.brochure;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events | PassionView Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c8102e',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+
+  <main class="max-w-6xl mx-auto px-6 py-12 space-y-14">
+
+    <!-- Header -->
+    <section class="text-center space-y-2">
+      <h1 class="text-3xl font-bold text-primary">Upcoming Events</h1>
+      <p class="text-gray-600 dark:text-gray-300">Workshops, bootcamps, webinars, and community meetups hosted by PassionView.</p>
+    </section>
+
+    <!-- Events Grid -->
+    <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Event Card -->
+      <div class="bg-white dark:bg-gray-800 p-5 rounded shadow space-y-3">
+        <img src="https://via.placeholder.com/600x300?text=Bootcamp+2025" class="rounded" />
+        <h3 class="text-xl font-semibold">Full Stack Bootcamp 2025</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Intensive 4-week program covering frontend & backend development. Includes project-based learning and mentorship.</p>
+        <div class="text-sm text-gray-500">📅 Aug 12 – Sept 9, 2025 | 🏢 Kano, Nigeria</div>
+        <a href="#" class="inline-block mt-2 text-primary font-semibold hover:underline">Register →</a>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-5 rounded shadow space-y-3">
+        <img src="https://via.placeholder.com/600x300?text=Cybersecurity+Webinar" class="rounded" />
+        <h3 class="text-xl font-semibold">Cybersecurity Awareness Webinar</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Free online session to teach teens and parents how to stay safe online. Powered by PassionView Youth Initiative.</p>
+        <div class="text-sm text-gray-500">📅 July 15, 2025 | 💻 Online</div>
+        <a href="#" class="inline-block mt-2 text-primary font-semibold hover:underline">Join Now →</a>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 p-5 rounded shadow space-y-3">
+        <img src="https://via.placeholder.com/600x300?text=Career+Fair" class="rounded" />
+        <h3 class="text-xl font-semibold">Tech Career Fair</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Meet recruiters from top tech firms, learn about open roles, and participate in speed interviews.</p>
+        <div class="text-sm text-gray-500">📅 October 3, 2025 | 🏢 PassionView Hub, Abuja</div>
+        <a href="#" class="inline-block mt-2 text-primary font-semibold hover:underline">Get Your Free Pass →</a>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center pt-10">
+      <h2 class="text-xl font-semibold">Want to host or sponsor an event with us?</h2>
+      <a href="contact.html" class="mt-3 inline-block bg-primary text-white px-6 py-3 rounded hover:opacity-90">Contact Our Events Team</a>
+    </section>
+
+  </main>
+
+</body>
+</html>
